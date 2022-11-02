@@ -15,7 +15,7 @@ class CustomElevetadButton extends StatelessWidget {
         onPressed: () {},
         child: Text(
           textButton,
-          style: const TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 15, color: Colors.white),
         ),
       ),
     );

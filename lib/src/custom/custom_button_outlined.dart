@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/config/custom_colors.dart';
 
 class CustomButtonOutlined extends StatelessWidget {
   final String textButton;
@@ -10,7 +11,10 @@ class CustomButtonOutlined extends StatelessWidget {
       height: 50,
       child: OutlinedButton(
           style: OutlinedButton.styleFrom(
-              side: const BorderSide(width: 1, color: Colors.green),
+              side: BorderSide(
+                width: 1,
+                color: CustomColors.customSwatchColor,
+              ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18))),
           onPressed: () {},
