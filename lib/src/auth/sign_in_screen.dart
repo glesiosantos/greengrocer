@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/custom/custom_button_outlined.dart';
+import 'package:greengrocer/src/custom/custom_elevated_button.dart';
+import 'package:greengrocer/src/custom/custom_row_divider.dart';
 import 'package:greengrocer/src/custom/custom_text_field_form.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -30,19 +33,7 @@ class SignInScreen extends StatelessWidget {
                   labelInput: 'Password',
                   isSecret: true,
                 ),
-                SizedBox(
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18))),
-                    onPressed: () {},
-                    child: const Text(
-                      'Acessar',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                ),
+                const CustomElevetadButton(textButton: 'Acessar Perfil'),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
@@ -54,43 +45,8 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          height: 10,
-                          color: Colors.grey.shade300,
-                          thickness: 2,
-                        ),
-                      ),
-                      const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text('OU')),
-                      Expanded(
-                        child: Divider(
-                          height: 10,
-                          color: Colors.grey.shade300,
-                          thickness: 2,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                  child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                          side: const BorderSide(width: 1, color: Colors.green),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18))),
-                      onPressed: () {},
-                      child: const Text(
-                        'Criar Conta',
-                        style: TextStyle(fontSize: 15),
-                      )),
-                )
+                const CustomRowDivider(),
+                const CustomButtonOutlined(textButton: 'Criar minha conta'),
               ],
             ),
           )
