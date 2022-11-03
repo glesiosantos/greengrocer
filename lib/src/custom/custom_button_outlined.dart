@@ -3,7 +3,13 @@ import 'package:greengrocer/src/config/custom_colors.dart';
 
 class CustomButtonOutlined extends StatelessWidget {
   final String textButton;
-  const CustomButtonOutlined({super.key, required this.textButton});
+  final Function() onPressed;
+
+  const CustomButtonOutlined({
+    super.key,
+    required this.textButton,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class CustomButtonOutlined extends StatelessWidget {
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18))),
-          onPressed: () {},
+          onPressed: onPressed,
           child: Text(
             textButton,
             style: const TextStyle(fontSize: 15),
