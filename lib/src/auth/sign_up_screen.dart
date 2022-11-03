@@ -79,7 +79,10 @@ class SignUpScreen extends StatelessWidget {
                         //   labelInput: 'Password Confirmation',
                         //   isSecret: true,
                         // ),
-                        const CustomElevetadButton(textButton: 'CRIAR CONTA'),
+                        CustomElevetadButton(
+                          textButton: 'CRIAR CONTA',
+                          onPressed: () {},
+                        ),
                       ],
                     ),
                   )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/auth/sign_up_screen.dart';
+import 'package:greengrocer/src/base/base_screen.dart';
 import 'package:greengrocer/src/custom/custom_button_outlined.dart';
 import 'package:greengrocer/src/custom/custom_elevated_button.dart';
 import 'package:greengrocer/src/custom/custom_row_divider.dart';
@@ -80,7 +81,14 @@ class SignInScreen extends StatelessWidget {
                       labelInput: 'Password',
                       isSecret: true,
                     ),
-                    const CustomElevetadButton(textButton: 'Acessar Perfil'),
+                    CustomElevetadButton(
+                      textButton: 'Acessar Perfil',
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const BaseSreen(),
+                        ));
+                      },
+                    ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
