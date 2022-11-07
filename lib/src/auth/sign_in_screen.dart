@@ -8,6 +8,7 @@ import 'package:greengrocer/src/custom/custom_text_field_form.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import '../config/custom_colors.dart';
+import '../custom/custom_logo_text.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -26,22 +27,11 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text.rich(
-                      TextSpan(style: const TextStyle(fontSize: 40), children: [
-                        const TextSpan(
-                            text: 'Green',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            )),
-                        TextSpan(
-                          text: 'grocer',
-                          style: TextStyle(
-                            color: CustomColors.customContrastColor,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ]),
+                    const CustomLogoText(
+                      firtText: 'Green',
+                      lastText: 'grocer',
+                      sizeText: 40,
+                      firtTextColorIsWhite: true,
                     ),
                     DefaultTextStyle(
                       style: const TextStyle(fontSize: 20),

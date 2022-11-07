@@ -1,16 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
+import 'package:greengrocer/src/home/home_tab.dart';
 
-class BaseSreen extends StatelessWidget {
+class BaseSreen extends StatefulWidget {
   const BaseSreen({super.key});
+
+  @override
+  State<BaseSreen> createState() => _BaseSreenState();
+}
+
+class _BaseSreenState extends State<BaseSreen> {
+  int currentIndex = 0;
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.green,
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: pageController,
+        children: [
+          const HomeTab(),
+          Container(
+            color: Colors.purple,
+          ),
+          Container(
+            color: Colors.blue,
+          ),
+          Container(
+            color: Colors.amberAccent,
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index; // para alterar a seleção do botton navigation
+            pageController.jumpToPage(index); // para alterar as páginas
+          });
+        },
         type: BottomNavigationBarType.fixed,
         backgroundColor: CustomColors.customSwatchColor,
         selectedItemColor: Colors.white,
