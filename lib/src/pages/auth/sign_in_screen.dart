@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/auth/sign_up_screen.dart';
-import 'package:greengrocer/src/base/base_screen.dart';
 import 'package:greengrocer/src/custom/custom_button_outlined.dart';
 import 'package:greengrocer/src/custom/custom_elevated_button.dart';
 import 'package:greengrocer/src/custom/custom_row_divider.dart';
 import 'package:greengrocer/src/custom/custom_text_field_form.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:greengrocer/src/pages/auth/sign_up_screen.dart';
 
-import '../config/custom_colors.dart';
-import '../custom/custom_logo_text.dart';
+import '../../config/custom_colors.dart';
+import '../../custom/custom_logo_text.dart';
+import '../base/base_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});

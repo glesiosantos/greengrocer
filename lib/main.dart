@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
-
-import 'src/auth/sign_in_screen.dart';
+import 'package:greengrocer/src/pages/auth/sign_in_screen.dart';
 
 void main() => runApp(const MyApp());
 
