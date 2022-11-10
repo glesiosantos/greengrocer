@@ -5,6 +5,7 @@ import 'package:greengrocer/src/custom/custom_row_divider.dart';
 import 'package:greengrocer/src/custom/custom_text_field_form.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:greengrocer/src/pages/auth/sign_up_screen.dart';
+import 'package:greengrocer/src/shared/app_data.dart' as appData;
 
 import '../../config/custom_colors.dart';
 import '../../custom/custom_logo_text.dart';
@@ -40,14 +41,9 @@ class SignInScreen extends StatelessWidget {
                         child: AnimatedTextKit(
                           repeatForever: true,
                           pause: Duration.zero,
-                          animatedTexts: [
-                            FadeAnimatedText('Frutas'),
-                            FadeAnimatedText('Verduras'),
-                            FadeAnimatedText('Legumes'),
-                            FadeAnimatedText('Carnes'),
-                            FadeAnimatedText('Cereais'),
-                            FadeAnimatedText('Laticíneos'),
-                          ],
+                          animatedTexts: appData.categories
+                              .map((c) => FadeAnimatedText(c))
+                              .toList(),
                         ),
                       ),
                     )
