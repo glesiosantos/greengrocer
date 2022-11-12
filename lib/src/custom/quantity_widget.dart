@@ -4,12 +4,14 @@ import 'package:greengrocer/src/custom/quantity_button_widget.dart';
 class QuantityWidget extends StatelessWidget {
   final int value;
   final String sufixText;
+  final bool isRemovable;
   final Function(int quantity) total;
 
   const QuantityWidget(
       {super.key,
       required this.value,
       required this.sufixText,
+      this.isRemovable = false,
       required this.total});
 
   @override
@@ -27,12 +29,15 @@ class QuantityWidget extends StatelessWidget {
             ),
           ]),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           QuantityButtonWidget(
-              icon: Icons.remove,
-              color: Colors.grey,
+              icon: !isRemovable || value > 1
+                  ? Icons.remove
+                  : Icons.delete_forever,
+              color: !isRemovable || value > 1 ? Colors.grey : Colors.red,
               onPressed: () {
-                if (value == 1) {
+                if (value == 1 && !isRemovable) {
                   return;
                 }
 
