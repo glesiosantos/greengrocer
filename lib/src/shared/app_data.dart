@@ -1,5 +1,6 @@
 import 'package:greengrocer/src/models/cart_item_model.dart';
 import 'package:greengrocer/src/models/item_model.dart';
+import 'package:greengrocer/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
   description:
@@ -53,6 +54,14 @@ ItemModel papaya = ItemModel(
   unit: 'kg',
   description:
       'O melhor mamão da região e que conta com o melhor preço de qualquer quitanda. Este item conta com vitaminas essenciais para o fortalecimento corporal, resultando em uma vida saudável.',
+);
+
+UserModel user = UserModel(
+  cpf: '999.999.999-99',
+  email: 'henrico.brito@gmail.com',
+  name: 'Henrico Brito da Silva',
+  password: '123456',
+  phone: '(86) 9.9988.6655',
 );
 
 // Lista de produtos
