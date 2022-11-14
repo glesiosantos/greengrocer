@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 import 'package:greengrocer/src/custom/custom_elevated_button.dart';
+import 'package:greengrocer/src/custom/payment_dialog.dart';
 import 'package:greengrocer/src/pages/cart/components/cart_item_tile.dart';
 import 'package:greengrocer/src/services/utils-services.dart';
 import '../../models/cart_item_model.dart';
@@ -86,7 +87,11 @@ class _CartTabState extends State<CartTab> {
                     textButton: 'Concluir Pedido'.toUpperCase(),
                     onPressed: () async {
                       bool? result = await showOrderConfirmation();
-                      print(result);
+                      showDialog(
+                        context: context,
+                        builder: (context) =>
+                            PaymentDialog(order: appData.orders.first),
+                      );
                     })
               ],
             ),
