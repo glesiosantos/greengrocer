@@ -20,6 +20,8 @@ class _CartTabState extends State<CartTab> {
   removeItemFromCart(CartItemModel cartItemModel) {
     setState(() {
       appData.cartItems.remove(cartItemModel);
+      utilService.showToast(
+          message: 'Item removido do carrinho: ${cartItemModel.item.itemName}');
     });
   }
 
@@ -87,11 +89,17 @@ class _CartTabState extends State<CartTab> {
                     textButton: 'Concluir Pedido'.toUpperCase(),
                     onPressed: () async {
                       bool? result = await showOrderConfirmation();
-                      showDialog(
-                        context: context,
-                        builder: (context) =>
-                            PaymentDialog(order: appData.orders.first),
-                      );
+
+                      if (result ?? false) {
+                        showDialog(
+                          context: context,
+                          builder: (context) =>
+                              PaymentDialog(order: appData.orders.first),
+                        );
+                      } else {
+                        utilService.showToast(
+                            message: 'Pedido não confirmado', isError: true);
+                      }
                     })
               ],
             ),
