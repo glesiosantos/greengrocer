@@ -35,7 +35,10 @@ class _BaseSreenState extends State<BaseSreen> {
         onTap: (index) {
           setState(() {
             currentIndex = index; // para alterar a seleção do botton navigation
-            pageController.jumpToPage(index); // para alterar as páginas
+            // pageController.jumpToPage(index); // para alterar as páginas
+            pageController.animateToPage(index,
+                duration: const Duration(milliseconds: 700),
+                curve: Curves.easeIn);
           });
         },
         type: BottomNavigationBarType.fixed,
