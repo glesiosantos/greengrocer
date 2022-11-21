@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:greengrocer/src/config/app_constant.dart';
+import 'package:greengrocer/src/controllers/auth_controller.dart';
 import 'package:greengrocer/src/custom/custom_button_outlined.dart';
 import 'package:greengrocer/src/custom/custom_elevated_button.dart';
 import 'package:greengrocer/src/custom/custom_row_divider.dart';
 import 'package:greengrocer/src/custom/custom_text_field_form.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:greengrocer/src/pages/auth/sign_up_screen.dart';
 import 'package:greengrocer/src/shared/app_data.dart' as appData;
 
 import '../../config/custom_colors.dart';
 import '../../custom/custom_logo_text.dart';
-import '../base/base_screen.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,46 +62,83 @@ class SignInScreen extends StatelessWidget {
                     color: Colors.white,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(45))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const CustomTextFieldForm(
-                        iconInput: Icons.email, labelInput: 'Email'),
-                    const CustomTextFieldForm(
-                      iconInput: Icons.lock,
-                      labelInput: 'Password',
-                      isSecret: true,
-                    ),
-                    CustomElevetadButton(
-                      textButton: 'Acessar Perfil',
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const BaseSreen(),
-                        ));
-                      },
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Esqueceu a senha?',
-                          style: TextStyle(
-                              color: CustomColors.customContrastColor,
-                              fontWeight: FontWeight.normal),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      CustomTextFieldForm(
+                        controller: _emailController,
+                        iconInput: Icons.email,
+                        labelInput: 'Email',
+                        validator: (email) {
+                          if (email == null || email.isEmpty) {
+                            return 'O campo e-mail é obrigatório';
+                          }
+
+                          if (!email.isEmail) {
+                            return 'Informe um e-mail válido';
+                          }
+
+                          return null;
+                        },
+                      ),
+                      CustomTextFieldForm(
+                        controller: _passwordController,
+                        iconInput: Icons.lock,
+                        labelInput: 'Password',
+                        isSecret: true,
+                        validator: (password) {
+                          if (password == null || password.isEmpty) {
+                            return 'O campo senha é obrigatório';
+                          }
+
+                          if (password.length < 6) {
+                            return 'O campo senha deverá conter no minimo 6 caracteres';
+                          }
+
+                          return null;
+                        },
+                      ),
+                      GetX<AuthController>(
+                        builder: (controller) {
+                          return CustomElevetadButton(
+                            isLoading: controller.isLoading.value,
+                            textButton: 'Acessar Perfil',
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                controller.signIn(
+                                    email: _emailController.text,
+                                    password: _passwordController.text);
+                                _emailController.text = '';
+                                _passwordController.text = '';
+                                // Get.offNamed(AppConstant.homeRoute);
+                              } else {
+                                print('campos não validos');
+                              }
+                            },
+                          );
+                        },
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Esqueceu a senha?',
+                            style: TextStyle(
+                                color: CustomColors.customContrastColor,
+                                fontWeight: FontWeight.normal),
+                          ),
                         ),
                       ),
-                    ),
-                    const CustomRowDivider(),
-                    CustomButtonOutlined(
-                      textButton: 'Criar minha conta',
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignUpScreen(),
-                        ));
-                      },
-                    ),
-                  ],
+                      const CustomRowDivider(),
+                      CustomButtonOutlined(
+                        textButton: 'Criar minha conta',
+                        onPressed: () => Get.toNamed(AppConstant.signUpRoute),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
@@ -104,5 +146,10 @@ class SignInScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  clearInput() {
+    _emailController.text = '';
+    _passwordController.text = '';
   }
 }

@@ -24,7 +24,7 @@ class _ProfileTabState extends State<ProfileTab> {
           IconButton(
               onPressed: () =>
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const SignInScreen(),
+                    builder: (context) => SignInScreen(),
                   )),
               icon: const Icon(Icons.logout))
         ],
