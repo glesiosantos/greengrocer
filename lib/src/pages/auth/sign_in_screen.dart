@@ -112,7 +112,7 @@ class SignInScreen extends StatelessWidget {
                                     password: _passwordController.text);
                                 _emailController.text = '';
                                 _passwordController.text = '';
-                                // Get.offNamed(AppConstant.homeRoute);
+                                Get.offNamed(AppConstant.homeRoute);
                               } else {
                                 print('campos não validos');
                               }

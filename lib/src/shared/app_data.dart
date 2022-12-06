@@ -58,12 +58,13 @@ ItemModel papaya = ItemModel(
 );
 
 UserModel user = UserModel(
-  cpf: '999.999.999-99',
-  email: 'henrico.brito@gmail.com',
-  name: 'Henrico Brito da Silva',
-  password: '123456',
-  phone: '(86) 9.9988.6655',
-);
+    id: 'fsdfsdfsad',
+    cpf: '999.999.999-99',
+    email: 'henrico.brito@gmail.com',
+    name: 'Henrico Brito da Silva',
+    password: '123456',
+    phone: '(86) 9.9988.6655',
+    token: 'fasfasdrfwerqrwerwerwe');
 
 // Lista de produtos
 List<ItemModel> items = [
