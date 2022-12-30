@@ -20,7 +20,7 @@ class CustomElevetadButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18))),
-        onPressed: onPressed,
+        onPressed: isLoading ? null : onPressed,
         child: !isLoading
             ? Text(
                 textButton,
